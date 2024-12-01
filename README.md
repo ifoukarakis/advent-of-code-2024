@@ -1,6 +1,7 @@
 # Advent of code 2024
 
-Solution to Advent of Code 2024. 
+This repository contains the solutions to the problems of Advent of Code 2024. The solutions are written in Python and
+DuckDB (so far).
 
 ## Project structure
 
@@ -42,3 +43,8 @@ For example, to run the solution for day 1:
 poetry run aoc2024 1
 ```
 
+The DuckDB solution can be run instead of the (default) Python solution by adding the `--duckdb` flag:
+
+```bash
+poetry run aoc2024 1 --duckdb
+```
