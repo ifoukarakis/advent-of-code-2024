@@ -28,3 +28,17 @@ Solution to Advent of Code 2024.
 └── README.md            <----- This file
 ```
 
+## Running
+
+To run the solution for a specific day, use the following command:
+
+```bash
+poetry run aoc2024 <day>
+```
+
+For example, to run the solution for day 1:
+
+```bash
+poetry run aoc2024 1
+```
+
