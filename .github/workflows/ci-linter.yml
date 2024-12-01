@@ -37,4 +37,4 @@ jobs:
         run: poetry run black . --check
 
       - name: Run flake8
-        run: poetry run flake8 --config build/.flake8 .
+        run: poetry run flake8 --config .flake8 .
