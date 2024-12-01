@@ -26,9 +26,9 @@ def solve_part2(values: Tuple[List[int]]) -> int:
     return sum([x * counts[x] for x in a])
 
 
-data = preprocess(load_data(1))
-print("Part 1:")
-print(solve_part1(data))
-print("\n")
-print("Part 2:")
-print(solve_part2(data))
+def solution():
+    data = preprocess(load_data(1))
+    print("Part 1:")
+    print(solve_part1(data))
+    print("Part 2:")
+    print(solve_part2(data))
