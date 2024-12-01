@@ -1,0 +1,40 @@
+name: Python Linter
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: Check code style for all python code
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        id: setup-python
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run isort
+        run: poetry run isort . --check
+
+      - name: Run black
+        run: poetry run black . --check
+
+      - name: Run flake8
+        run: poetry run flake8 --config build/.flake8 .

@@ -6,6 +6,10 @@ Solution to Advent of Code 2024.
 
 ```
 .
+├── .github
+│  └── workflows
+│     └── ci-lint.yml    <----- GitHub Actions workflow for linting
+├── .gitignore           <----- Git ignore file
 ├── aoc2024
 │  ├── day1
 │  │  └── solution.py    <----- Solution for day 1
