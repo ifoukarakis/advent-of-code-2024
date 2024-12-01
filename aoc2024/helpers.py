@@ -1,7 +1,7 @@
-import duckdb
-
 from pathlib import Path
 from typing import List
+
+import duckdb
 
 DATA_DIR = Path(__file__).parent.parent / 'data'
 
@@ -23,7 +23,9 @@ def load_data_to_duckdb(day: int):
     :param day:
     :return:
     """
-    duckdb.sql(f"""
-        CREATE TABLE raw_day_{day} AS 
+    duckdb.sql(
+        f"""
+        CREATE TABLE raw_day_{day} AS
             FROM read_csv('data/day{day}/input.txt', header=false, columns={{'line': 'VARCHAR'}})
-        """)
+        """
+    )
