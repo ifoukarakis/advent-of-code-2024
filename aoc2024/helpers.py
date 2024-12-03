@@ -6,13 +6,17 @@ import duckdb
 DATA_DIR = Path(__file__).parent.parent / 'data'
 
 
-def load_data(day: int) -> List[str]:
+def load_data(day: int, as_single_string: bool = False) -> List[str] | str:
     """
     Load the data for a given day. Assumes the data is in a file called input.txt in a folder called data/day{day}
     :param day: the day to load the data for.
+    :param as_single_string: if True, return the data as a single string, otherwise return a list of strings,
+                             one for each line in the input file.
     :return: a list of strings, one for each line in the input file.
     """
     with open(DATA_DIR / f'day{day}' / 'input.txt') as f:
+        if as_single_string:
+            return f.read()
         return f.read().splitlines()
 
 
