@@ -83,7 +83,7 @@ def solve_part2() -> int:
             a.col,
             ul.value || dr.value as diag1,
             dl.value || ur.value as diag2
-        from 
+        from
             a
             -- Join with full to get elements of diagonals
             -- Up-Left
@@ -91,7 +91,7 @@ def solve_part2() -> int:
             -- Up-Right
             join mas ur on ur.row = a.row - 1 and ur.col = a.col + 1
             -- Down-Left
-            join mas dl on dl.row = a.row + 1 and dl.col = a.col - 1 
+            join mas dl on dl.row = a.row + 1 and dl.col = a.col - 1
             -- Down-Right
             join mas dr on dr.row = a.row + 1 and dr.col = a.col + 1
         where
