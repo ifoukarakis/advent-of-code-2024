@@ -39,10 +39,10 @@ def preprocess():
         )
         select
             update_id,
-            string_split(updates, ',')::int[] as raw_update,
-            unnest(raw_update)::int as page,
-            generate_subscripts(raw_update, 1) as index,
-            index = (len(raw_update) + 1) // 2 as is_middle
+            string_split(updates, ',')::int[] as all_pages,
+            unnest(all_pages)::int as page,
+            generate_subscripts(all_pages, 1) as index,
+            index = (len(all_pages) + 1) // 2 as is_middle
         from lines
     """
     )
