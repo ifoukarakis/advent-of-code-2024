@@ -8,10 +8,10 @@ def preprocess():
         """
     create table rules as
         with lines as (
-          select 
+          select
             unnest(
                 string_split(
-                    split_part(decode(content), '\n\n', 1), 
+                    split_part(decode(content), '\n\n', 1),
                     '\n'
                 )
             ) as rule
@@ -19,7 +19,7 @@ def preprocess():
         )
         select
             split_part(rule, '|', 1)::int as before,
-            split_part(rule, '|', 2)::int as after 
+            split_part(rule, '|', 2)::int as after
         from lines
     """
     )
@@ -28,9 +28,9 @@ def preprocess():
         """
     create table updates as
         with lines as (
-          select 
+          select
           string_split(
-                    split_part(decode(content), '\n\n', 2), 
+                    split_part(decode(content), '\n\n', 2),
                     '\n'
             ) as lines,
             unnest(lines) as updates,
@@ -51,7 +51,8 @@ def preprocess():
 def solve_part1() -> int:
     return duckdb.sql(
         """
-        with tmp as (
+        with update_validity_check as (
+            -- For each update, check if it is a violation by comparing each page with all other pages
             select
                 a.update_id,
                 a.page as current_page,
@@ -73,18 +74,14 @@ def solve_part1() -> int:
         from
             updates a
         where
-            update_id in (select update_id from tmp where valid_update)
-            and is_middle 
+            update_id in (select update_id from update_validity_check where valid_update)
+            and is_middle
         """
     )
 
 
 def solve_part2() -> int:
-    return duckdb.sql(
-        """
-
-        """
-    )
+    pass
 
 
 def solution():
